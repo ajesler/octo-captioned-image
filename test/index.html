@@ -1,0 +1,26 @@
+---
+layout: default
+---
+## Basic Usage
+
+{% captioned_image {{site.url}}/images/puppies.png 'Look at the puppies!' %}
+
+
+## Using some optional properties
+
+{% captioned_image {{site.url}}/images/adventure_awaits.gif "Adventure awaits!" float:"left" clear:"right" %}
+
+
+# Using all properties
+
+{% captioned_image {{site.url}}/images/sad_robot.png "This is why we dont let machines have feelings" 1000px 500px position:"bottom" float:"left" clear:"right" %}
+
+
+# Quotes in caption
+
+{% captioned_image {{site.url}}/images/unimportant.jpg "And I said \"O'Leary is a fun guy!\"" 450px auto clear:"both" position:"bottom" %}
+
+
+# Caption has properties in it
+
+{% captioned_image /images/finally.jpg "caption's position:\"top\" auto 550px clear:\"both\" float:right" 650px auto clear:"left" position:"bottom" float:"left" %}

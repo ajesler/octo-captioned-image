@@ -1,0 +1,15 @@
+# Site settings
+title: Your awesome title
+email: your-email@domain.com
+baseurl: ""
+url: "http://yoursite.com"
+
+exclude:
+  - Gemfile*
+  - test_caption_extractor.rb
+
+# Build settings
+markdown: kramdown
+gems:
+  - octopress-ink # required for the css_asset_tag
+  - octopress-captioned-image
