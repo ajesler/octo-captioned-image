@@ -30,16 +30,18 @@ module Octopress
           if caption && source
 
             @position = position || "top"
+            @figure_classes = figure_classes
+            @sizes = sizes
 
             fig_caption = ["  <figcaption class=\"captioned-image-caption-#{@position}\">"]
             fig_caption << "    #{@caption}"
             fig_caption << "  </figcaption>"
 
-            image = ["  <img src=\"#{@source}\" alt=\"#{@caption}\" #{sizes}/>"]
+            image = ["  <img src=\"#{@source}\" alt=\"#{@caption}\" #{@sizes}/>"]
 
             figure_content = @position == "top" ? fig_caption + image : image + fig_caption
 
-            figure = ["<figure class=\"captioned-image-figure#{figure_classes}\">"]
+            figure = ["<figure class=\"captioned-image-figure#{@figure_classes}\">"]
             figure += figure_content
             figure << "</figure>"
             figure.join("\n")
@@ -65,8 +67,9 @@ module Octopress
           f = @mutable_markup.scan(Float).flatten.last
           c = @mutable_markup.scan(Clear).flatten.last
           classes = ""
-          classes += ".float-#{f}" if f
-          classes += ".clear-#{c}" if c
+          classes += " float-#{f}" if f
+          classes += " clear-#{c}" if c
+          classes
         end
 
         def sizes
@@ -74,6 +77,7 @@ module Octopress
           attrs = ""
           attrs += "width=\"#{s[0]}\" " if s[0]
           attrs += "height=\"#{s[1]}\" " if s[1]
+          attrs
         end
 
         def process_liquid(context)

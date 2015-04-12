@@ -1,4 +1,4 @@
-.captioned-image-figure {
+figure.captioned-image-figure {
 	padding: 0;
 	margin: 0 20px 20px 0;
 	border: 0;
@@ -6,7 +6,7 @@
 	font-size: 14px;
 }
 
-.captioned-image-caption-top {
+figcaption.captioned-image-caption-top {
 	margin: 0;
 	padding: 0;
 	position: relative;
@@ -14,7 +14,6 @@
 	line-height: 2em;
 	text-shadow: rgba(255,255,255,0.8) 0 1px 0;
 	color: #474747;
-	font-weight: normal;
 	background-color: #ccc;
 	background-image: linear-gradient(#fff, #f0f0f0 6%, #e5e5e5 90%, #e5e5e5);
 	border: 1px solid #cbcbcb;
@@ -24,32 +23,36 @@
 	border-top-right-radius: 5px;
 }
 
-.captioned-image-caption-bottom {
-	@extend .captioned-image-caption-top;
-	margin-top: -5px;
+figcaption.captioned-image-caption-bottom {
+	margin: -5px 0 0 0;
+	padding: 0;
+	position: relative;
+	text-align: center;
+	line-height: 2em;
+	text-shadow: rgba(255,255,255,0.8) 0 1px 0;
+	color: #474747;
+	background-color: #ccc;
+	background-image: linear-gradient(#fff, #f0f0f0 6%, #e5e5e5 90%, #e5e5e5);
+	border: 1px solid #cbcbcb;
+	display: table-caption;
 	caption-side: bottom;
-	border-top-left-radius: 0px;
-	border-top-right-radius: 0px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
 
-figure.captioned-image-figure.clear-both {
+figure.clear-both {
 	clear: both;
 }
-figure.captioned-image-figure.clear-left {
+figure.clear-left {
 	clear: left;
 }
-figure.captioned-image-figure.clear-right {
+figure.clear-right {
 	clear: right;
 }
-figure.captioned-image-figure.float-both {
-	float: both;
-}
-figure.captioned-image-figure.float-left {
+figure.float-left {
 	float: left;
 }
-figure.captioned-image-figure.float-right {
+figure.float-right {
 	float: right;
 }
 
