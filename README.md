@@ -1,6 +1,8 @@
 # Octopress Captioned Image
 
-Creates captioned images.
+An octopress ink plugin for creating captioned images.
+
+[![Build Status](https://travis-ci.org/ajesler/octopress-captioned-image.svg?branch=master)](https://travis-ci.org/ajesler/octopress-captioned-image)
 
 ## Example
 
@@ -76,7 +78,7 @@ defaults to `top`
 
 results in the following html
 
-```
+```html
 <figure class="captioned-image-figure">
 	<figcaption class="captioned-image-caption-top">
 		Look at the puppies!
