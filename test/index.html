@@ -24,3 +24,13 @@ layout: default
 # Caption has properties in it
 
 {% captioned_image /images/finally.jpg "caption's position:\"top\" auto 550px clear:\"both\" float:right" 650px auto clear:"left" position:"bottom" float:"left" %}
+
+
+# Caption with HTML markup
+
+{% captioned_image {{site.url}}/images/circuit-schematic.png "Circuit schematic - created with <a href='http://fritzing.org'>fritzing</a>" %}
+
+
+# Multiple images in a figure
+
+{% captioned_image {{site.url}}/images/a-mouse.png {{site.url}}/images/a-bear.png "How to spot the difference between bears and mice" position:"bottom" %}

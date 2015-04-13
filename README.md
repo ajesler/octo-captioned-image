@@ -81,6 +81,14 @@ defaults to `top`
 {% captioned_image {{site.url}}/images/sad_robot.png "This is why we dont let machines have feelings" 1000px 500px position:bottom float:"left" clear:"right" %}
 
 {% captioned_image {{site.url}}/images/unimportant.jpg "And I said \"O'Leary is a fun guy!\"" clear:"both" position:"bottom" %}
+
+// you can also embed html into the caption
+// note that you will be need to careful with the html quotes.
+{% captioned_image {{site.url}}/images/circuit-schematic.png "Circuit schematic - created with <a href='https://fritzing.org'>fritzing</a>" %}
+
+// multiple images in a figure
+// note that all the images will have the same caption, and that any size given will be applied to all images
+{% captioned_image {{site.url}}/images/a-mouse.png {{site.url}}/images/a-bear.png "How to spot the difference between bears and mice" position:"bottom" %}
 ```
 
 results in the following html
@@ -112,6 +120,21 @@ results in the following html
 	<figcaption class="captioned-image-caption-bottom">
 		And I said &quot;O'Leary is a fun guy!&quot;
 	</figcaption>
+</figure>
+
+<figure class="captioned-image-figure">
+  <figcaption class="captioned-image-caption-top">
+    Circuit schematic - created with <a href='http://fritzing.org'>fritzing</a>
+  </figcaption>
+  <img src="http://yoursite.com/images/circuit-schematic.png" alt="Circuit schematic - created with <a href='http://fritzing.org'>fritzing</a>" />
+</figure>
+
+<figure class="captioned-image-figure">
+  <img src="http://yoursite.com/images/a-mouse.png" alt="How to spot the difference between bears and mice" />
+  <img src="http://yoursite.com/images/a-bear.png" alt="How to spot the difference between bears and mice" />
+  <figcaption class="captioned-image-caption-bottom">
+    How to spot the difference between bears and mice
+  </figcaption>
 </figure>
 ```
 

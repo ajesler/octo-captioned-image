@@ -55,4 +55,14 @@ class TestCaptionExtractor < Minitest::Test
 		assert_equal expected, c 
 		assert_equal p.join, r
 	end
+
+	def test_html_in_caption
+		caption = "\"Wiring diagram for the lamp - created with <a href=\\\"http://fritzing.org\\\">fritzing</a>\""
+		p = ["#{IMAGE_PATH} ", " 300px 500px float:\"left\" clear:\"right\""]
+		expected = "Wiring diagram for the lamp - created with <a href=&quot;http://fritzing.org&quot;>fritzing</a>"
+		markup = [p[0], caption, p[1]].join
+		c, r = @extractor.extract(markup)
+		assert_equal expected, c 
+		assert_equal p.join, r
+	end
 end

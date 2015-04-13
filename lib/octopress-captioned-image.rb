@@ -37,7 +37,9 @@ module Octopress
             fig_caption << "    #{@caption}"
             fig_caption << "  </figcaption>"
 
-            image = ["  <img src=\"#{@source}\" alt=\"#{@caption}\" #{@sizes}/>"]
+            image = @source.map do |s| 
+              ["  <img src=\"#{s}\" alt=\"#{@caption}\" #{@sizes}/>"]
+            end
 
             figure_content = @position == "top" ? fig_caption + image : image + fig_caption
 
@@ -51,12 +53,13 @@ module Octopress
         end
 
         def caption
+          # the markup other methods use to find params has the caption removed to avoid parsing issues
           @caption, @mutable_markup = CaptionExtractor.extract @markup
           @caption
         end
 
         def source
-          @source = @mutable_markup.scan(Source).map(&:first).compact.first
+          @source = @mutable_markup.scan(Source).map(&:first).compact
         end
 
         def position
