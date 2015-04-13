@@ -1,6 +1,6 @@
 require "octopress-captioned-image/version"
 require "octopress-captioned-image/caption_extractor"
-require "jekyll"
+require "octopress-ink"
 
 module Octopress
   module Tags
@@ -90,13 +90,15 @@ end
 
 Liquid::Template.register_tag('captioned_image', Octopress::Tags::CaptionedImageTag::Tag)
 
-if defined? Octopress::Docs
-  Octopress::Docs.add({
-    name:        "Octopress Captioned Image Tag",
-    gem:         "octopress-captioned-image",
-    version:     Octopress::Tags::CaptionedImageTag::VERSION,
-    description: "Creates captioned images",
-    path:        File.expand_path(File.join(File.dirname(__FILE__), "../")),
-    source_url:  "https://github.com/ajesler/octopress-captioned-image"
-  })
-end
+Octopress::Ink.add_plugin({
+  name:        "Octopress Captioned Image",
+  gem:         "octopress-captioned-image",
+  path:        File.expand_path(File.join(File.dirname(__FILE__), "../")),
+  type:        "plugin",
+
+  # Metadata which is displayed with plugin info
+  version:     Octopress::Tags::CaptionedImageTag::VERSION,
+  description: "Create captioned images",
+  source_url:  "https://github.com/ajesler/octopress-captioned-image",
+  website:     "https://github.com/ajesler/octopress-captioned-image"                                
+})

@@ -36,7 +36,14 @@ Then add the gem to your Jekyll configuration.
     gems:
       - octopress-captioned-image
 
-If you're using a standard Jekyll theme, add {% css_asset_tag %} to your site layout.
+If you're using a standard Jekyll theme, add {% css_asset_tag %} to your site layout.  
+
+You will also need to run the ink commmand to copy style resources into your site.  
+
+```
+octopress ink copy octopress-captioned-image --stylesheets
+```
+
 
 ## Syntax
 
@@ -86,21 +93,21 @@ results in the following html
 	<img src="http://yoursite.com/images/puppies.png" alt="Look at the puppies!">
 </figure>
 
-<figure class="captioned-image-figure.float-left.clear-right">
+<figure class="captioned-image-figure float-left clear-right">
 	<figcaption class="captioned-image-caption-top">
 		Adventure awaits!
 	</figcaption>
 	<img src="http://yoursite.com/images/adventure_awaits.gif" alt="Adventure awaits!">
 </figure>
 
-<figure class="captioned-image-figure.float-left.clear-right">
+<figure class="captioned-image-figure float-left clear-right">
 	<img src="http://yoursite.com/images/sad_robot.png" alt="This is why we dont let machines have feelings" width="1000px" height="500px">
 	<figcaption class="captioned-image-caption-bottom">
 		This is why we dont let machines have feelings
 	</figcaption>
 </figure>
 
-<figure class="captioned-image-figure.clear-both">
+<figure class="captioned-image-figure clear-both">
 	<img src="http://yoursite.com/images/unimportant.jpg" alt="And I said &quot;O'Leary is a fun guy!&quot;" width="1000px" height="500px">
 	<figcaption class="captioned-image-caption-bottom">
 		And I said &quot;O'Leary is a fun guy!&quot;
