@@ -21,3 +21,6 @@ tmp
 *.a
 mkmf.log
 _site
+.gems
+.rbenv-gemset
+.ruby-version

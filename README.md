@@ -1,6 +1,6 @@
 # Octopress Captioned Image
 
-An octopress ink plugin for creating captioned images.
+An Octopress ink plugin for creating captioned images.
 
 [![Build Status](https://travis-ci.org/ajesler/octopress-captioned-image.svg?branch=master)](https://travis-ci.org/ajesler/octopress-captioned-image)
 
@@ -36,13 +36,7 @@ Then add the gem to your Jekyll configuration.
     gems:
       - octopress-captioned-image
 
-If you're using a standard Jekyll theme, add {% css_asset_tag %} to your site layout.  
-
-You will also need to run the ink commmand to copy style resources into your site.  
-
-```
-octopress ink copy octopress-captioned-image --stylesheets
-```
+If you're using a standard Jekyll theme, add `{% css_asset_tag %}` to your site layout.  
 
 
 ## Syntax
@@ -140,15 +134,19 @@ results in the following html
 
 ## Customisation
 
-If you want to modify any of the CSS classes, see [main.scss](https://github.com/ajesler/octopress-captioned-image/blob/master/assets/stylesheets/main.scss).
+To customise the styling, copy the stylesheet into your _plugins directory with the following command. You can then edit it and override the default styles.
+
+```
+octopress ink copy octopress-captioned-image --stylesheets
+```
 
 ## Testing
 
 There are two sets of tests, one for the caption extractor and one full integration test with octopress-ink.
 
 ```
-bundle exec clash test
 rake test
+bundle exec clash test
 ```
 
 ## Contributing
