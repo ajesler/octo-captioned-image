@@ -95,13 +95,13 @@ Liquid::Template.register_tag('captioned_image', Octopress::Tags::CaptionedImage
 
 Octopress::Ink.add_plugin({
   name:        "Octopress Captioned Image",
-  gem:         "octopress-captioned-image",
+  gem:         "octo-captioned-image",
   path:        File.expand_path(File.join(File.dirname(__FILE__), "../")),
   type:        "plugin",
 
   # Metadata which is displayed with plugin info
   version:     Octopress::Tags::CaptionedImageTag::VERSION,
   description: "Create captioned images",
-  source_url:  "https://github.com/ajesler/octopress-captioned-image",
-  website:     "https://github.com/ajesler/octopress-captioned-image"                                
+  source_url:  "https://github.com/ajesler/octo-captioned-image",
+  website:     "https://github.com/ajesler/octo-captioned-image"                                
 })

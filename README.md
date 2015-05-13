@@ -2,11 +2,11 @@
 
 An Octopress ink plugin for creating captioned images.
 
-[![Build Status](https://travis-ci.org/ajesler/octopress-captioned-image.svg?branch=master)](https://travis-ci.org/ajesler/octopress-captioned-image)
+[![Build Status](https://travis-ci.org/ajesler/octo-captioned-image.svg?branch=master)](https://travis-ci.org/ajesler/octo-captioned-image)
 
 ## Example
 
-![Example Usage](https://github.com/ajesler/octopress-captioned-image/raw/master/captioned-image-example.png)
+![Example Usage](https://github.com/ajesler/octo-captioned-image/raw/master/captioned-image-example.png)
 
 is produced by 
 
@@ -20,7 +20,7 @@ is produced by
 If you're using bundler add this gem to your site's Gemfile in the `:jekyll_plugins` group:
 
     group :jekyll_plugins do
-      gem 'octopress-captioned-image'
+      gem 'octo-captioned-image'
     end
 
 Then install the gem with Bundler
@@ -29,12 +29,12 @@ Then install the gem with Bundler
 
 To install manually without bundler:
 
-    $ gem install octopress-captioned-image
+    $ gem install octo-captioned-image
 
 Then add the gem to your Jekyll configuration.
 
     gems:
-      - octopress-captioned-image
+      - octo-captioned-image
 
 If you're using a standard Jekyll theme, add `{% css_asset_tag %}` to your site layout.  
 
@@ -137,7 +137,7 @@ results in the following html
 To customise the styling, copy the stylesheet into your _plugins directory with the following command. You can then edit it and override the default styles.
 
 ```
-octopress ink copy octopress-captioned-image --stylesheets
+octopress ink copy octo-captioned-image --stylesheets
 ```
 
 ## Testing
@@ -151,7 +151,7 @@ bundle exec clash test
 
 ## Contributing
 
-1. Fork it ( https://github.com/ajesler/octopress-captioned-image/fork )
+1. Fork it ( https://github.com/ajesler/octo-captioned-image/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
