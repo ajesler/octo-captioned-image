@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Octopress::Tags::CaptionedImageTag::VERSION
   spec.authors       = ["Andrew Esler"]
   spec.email         = ["aj@esler.co.nz"]
-  spec.summary       = %q{Creates captioned images}
+  spec.summary       = %q{Creates captioned images for octopress v3}
   spec.description   = <<-EOF
     octo-captioned-image adds captioned images to octopress v3. It uses the figure and figcaption tags. Styling can be customised. 
   EOF
