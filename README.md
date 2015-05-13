@@ -11,8 +11,8 @@ An Octopress ink plugin for creating captioned images.
 is produced by 
 
 ```
-{% captioned_image /images/kitten.jpeg "a kitten!" float:"left" %}
-{% captioned_image /images/ijen-fire.jpg "Fire on Mt Ijen by Dennis Stauffer via Flickr" float:"left" position:"bottom" %}
+{% captioned_image /images/kitten.jpeg "a kitten!" float:"left" chrome %}
+{% captioned_image /images/ijen-fire.jpg "Fire on Mt Ijen by Dennis Stauffer via Flickr" float:"left" position:"bottom" chrome %}
 ```
 
 ## Installation
