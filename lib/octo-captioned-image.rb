@@ -1,6 +1,6 @@
-require "octopress-captioned-image/version"
-require "octopress-captioned-image/caption_extractor"
-require "octopress-captioned-image/caption_options_parser"
+require "octo-captioned-image/version"
+require "octo-captioned-image/caption_extractor"
+require "octo-captioned-image/caption_options_parser"
 require "octopress-ink"
 
 module Octopress

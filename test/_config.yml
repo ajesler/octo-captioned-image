@@ -12,5 +12,5 @@ exclude:
 # Build settings
 markdown: kramdown
 gems:
-  - octopress-ink # required for the css_asset_tag
-  - octopress-captioned-image
+  - octopress-ink
+  - octo-captioned-image

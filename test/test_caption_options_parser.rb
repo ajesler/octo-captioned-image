@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require "octopress-captioned-image/caption_options_parser"
+require "octo-captioned-image/caption_options_parser"
 
 class TestCaptionOptionsParser < Minitest::Test
 

@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'octopress-captioned-image/version'
+require 'octo-captioned-image/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "octopress-captioned-image"
+  spec.name          = "octo-captioned-image"
   spec.version       = Octopress::Tags::CaptionedImageTag::VERSION
   spec.authors       = ["Andrew Esler"]
   spec.email         = ["aj@esler.co.nz"]
   spec.summary       = %q{Creates captioned images}
   spec.description   = %q{Creates captioned images}
-  spec.homepage      = "https://github.com/ajesler/octopress-captioned-image"
+  spec.homepage      = "https://github.com/ajesler/octo-captioned-image"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").grep(/^(bin\/|lib\/|assets\/|changelog|readme|license)/i)
