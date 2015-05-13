@@ -2,7 +2,7 @@
 
 An Octopress ink plugin for creating captioned images.
 
-[![Build Status](https://travis-ci.org/ajesler/octo-captioned-image.svg?branch=master)](https://travis-ci.org/ajesler/octo-captioned-image)
+[![Gem Version](https://badge.fury.io/rb/octo-captioned-image.svg)](http://badge.fury.io/rb/octo-captioned-image) [![Build Status](https://travis-ci.org/ajesler/octo-captioned-image.svg?branch=master)](https://travis-ci.org/ajesler/octo-captioned-image) 
 
 ## Example
 
