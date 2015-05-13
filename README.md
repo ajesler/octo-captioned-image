@@ -47,7 +47,8 @@ If you're using a standard Jekyll theme, add `{% css_asset_tag %}` to your site 
 
 ### Properties
 
-`src` and `caption` are required, the rest of the properties are optional.
+`src` and `caption` are required, the rest of the properties are optional.  
+Please note that both width and height must be given or neither given. `auto` can be used as a width and height value.
 
 * `src`  
 this is required and can be an absolute or relative path.
@@ -62,7 +63,9 @@ no default value
 * `clear`  
 no default value
 * `position`  
-defaults to `top`
+defaults to `top`  
+* `chrome`  
+has no value, but if present will add a gradient background to the caption.
 
 
 ## Examples
@@ -72,7 +75,7 @@ defaults to `top`
 
 {% captioned_image {{site.url}}/images/adventure_awaits.gif "Adventure awaits!" float:"left" clear:"right" %}
 
-{% captioned_image {{site.url}}/images/sad_robot.png "This is why we dont let machines have feelings" 1000px 500px position:bottom float:"left" clear:"right" %}
+{% captioned_image {{site.url}}/images/sad_robot.png "This is why we dont let machines have feelings" 1000px 500px position:bottom float:"left" clear:"right" chrome %}
 
 {% captioned_image {{site.url}}/images/unimportant.jpg "And I said \"O'Leary is a fun guy!\"" clear:"both" position:"bottom" %}
 
@@ -82,51 +85,51 @@ defaults to `top`
 
 // multiple images in a figure
 // note that all the images will have the same caption, and that any size given will be applied to all images
-{% captioned_image {{site.url}}/images/a-mouse.png {{site.url}}/images/a-bear.png "How to spot the difference between bears and mice" position:"bottom" %}
+{% captioned_image {{site.url}}/images/a-mouse.png {{site.url}}/images/a-bear.png "How to spot the difference between bears and mice" position:"bottom" chrome %}
 ```
 
 results in the following html
 
 ```html
-<figure class="captioned-image-figure">
-	<figcaption class="captioned-image-caption-top">
+<figure class="captioned-image">
+	<figcaption class="caption-top">
 		Look at the puppies!
 	</figcaption>
 	<img src="http://yoursite.com/images/puppies.png" alt="Look at the puppies!">
 </figure>
 
-<figure class="captioned-image-figure float-left clear-right">
-	<figcaption class="captioned-image-caption-top">
+<figure class="captioned-image float-left clear-right">
+	<figcaption class="caption-top">
 		Adventure awaits!
 	</figcaption>
 	<img src="http://yoursite.com/images/adventure_awaits.gif" alt="Adventure awaits!">
 </figure>
 
-<figure class="captioned-image-figure float-left clear-right">
+<figure class="captioned-image-chrome float-left clear-right">
 	<img src="http://yoursite.com/images/sad_robot.png" alt="This is why we dont let machines have feelings" width="1000px" height="500px">
-	<figcaption class="captioned-image-caption-bottom">
+	<figcaption class="caption-bottom-chrome">
 		This is why we dont let machines have feelings
 	</figcaption>
 </figure>
 
-<figure class="captioned-image-figure clear-both">
+<figure class="captioned-image clear-both">
 	<img src="http://yoursite.com/images/unimportant.jpg" alt="And I said &quot;O'Leary is a fun guy!&quot;" width="1000px" height="500px">
-	<figcaption class="captioned-image-caption-bottom">
+	<figcaption class="caption-bottom">
 		And I said &quot;O'Leary is a fun guy!&quot;
 	</figcaption>
 </figure>
 
-<figure class="captioned-image-figure">
-  <figcaption class="captioned-image-caption-top">
+<figure class="captioned-image">
+  <figcaption class="caption-top">
     Circuit schematic - created with <a href='http://fritzing.org'>fritzing</a>
   </figcaption>
   <img src="http://yoursite.com/images/circuit-schematic.png" alt="Circuit schematic - created with <a href='http://fritzing.org'>fritzing</a>" />
 </figure>
 
-<figure class="captioned-image-figure">
+<figure class="captioned-image-chrome">
   <img src="http://yoursite.com/images/a-mouse.png" alt="How to spot the difference between bears and mice" />
   <img src="http://yoursite.com/images/a-bear.png" alt="How to spot the difference between bears and mice" />
-  <figcaption class="captioned-image-caption-bottom">
+  <figcaption class="caption-bottom-chrome">
     How to spot the difference between bears and mice
   </figcaption>
 </figure>
@@ -142,7 +145,7 @@ octopress ink copy octo-captioned-image --stylesheets
 
 ## Testing
 
-There are two sets of tests, one for the caption extractor and one full integration test with octopress-ink.
+There are two sets of tests; caption extraction/option parsing logic, and a rendered output check.
 
 ```
 rake test

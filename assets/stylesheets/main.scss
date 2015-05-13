@@ -1,4 +1,4 @@
-figure.captioned-image-figure {
+figure.captioned-image {
 	padding: 0;
 	margin: 1em 1em;
 	border: 0;
@@ -6,25 +6,48 @@ figure.captioned-image-figure {
 	font-size: 0.8em;
 }
 
-figcaption.captioned-image-caption-top {
+figure.captioned-image-chrome {
+	@extend figure.captioned-image;
+	border: 1px solid #cbcbcb;
+}
+
+figure.captioned-image img {
+	margin: 0;
+	padding: 0;
+}
+
+figcaption.captioned-image-caption {
 	margin: 0;
 	padding: 0;
 	position: relative;
 	text-align: center;
 	line-height: 2em;
+	display: table-caption;
+}
+
+figcaption.caption-top {
+	@extend figcaption.captioned-image-caption;
+	caption-side: top;
+}
+
+figcaption.caption-top-chrome {
+	@extend figcaption.caption-top;
 	text-shadow: rgba(255,255,255,0.8) 0 1px 0;
 	color: #474747;
 	background-color: #ccc;
 	background-image: linear-gradient(#fff, #f0f0f0 6%, #e5e5e5 90%, #e5e5e5);
 	border: 1px solid #cbcbcb;
-	display: table-caption; 
-	caption-side: top;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
 
-figcaption.captioned-image-caption-bottom {
-	@extend figcaption.captioned-image-caption-top;
+figcaption.caption-bottom {
+	@extend figcaption.captioned-image-caption;
+	caption-side: bottom;
+}
+
+figcaption.caption-bottom-chome {
+	@extend figcaption.caption-bottom;
 	margin: -5px 0 0 0;
 	caption-side: bottom;
 	border-top-left-radius: 0px;
@@ -48,10 +71,4 @@ figure.float-left {
 }
 figure.float-right {
 	float: right;
-}
-
-.captioned-image-figure img {
-	border: 1px solid #cbcbcb;
-	margin: 0;
-	padding: 0;
 }

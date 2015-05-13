@@ -7,6 +7,7 @@ url: "http://yoursite.com"
 exclude:
   - Gemfile*
   - test_caption_extractor.rb
+  - test_caption_options_parser.rb
 
 # Build settings
 markdown: kramdown

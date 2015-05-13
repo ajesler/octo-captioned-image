@@ -1,5 +1,6 @@
 require "octopress-captioned-image/version"
 require "octopress-captioned-image/caption_extractor"
+require "octopress-captioned-image/caption_options_parser"
 require "octopress-ink"
 
 module Octopress
@@ -9,78 +10,55 @@ module Octopress
         # most of this class is copied from 
         # https://github.com/octopress/video-tag/blob/master/lib/octopress-video-tag.rb
 
-        @mutable_markup = nil
-        @source  = nil
-        @caption = ""
-
-        Source   = /((https?:\/\/|\/)\S+\.(png|gif|bmp|jpe?g)\S*)/i
-        Sizes    = /\s(auto|\d\S+)/i
-        Position  = /(:?position:\s*"?(:?\w+))/i
-        Float  = /(:?float:\s*"?(:?\w+))/i
-        Clear  = /(:?clear:\s*"?(:?\w+))/i
-
         def initialize(tag_name, markup, tokens)
           @markup = markup
           super
         end
 
         def render(context)
-          @markup = process_liquid(context)
+          @markup = process_liquid(context) # what is this doing? should not replace markup
 
-          if caption && source
+          caption, remaining_markup = extract_caption(@markup)
+          options = parse_options(remaining_markup)
 
-            @position = position || "top"
-            @figure_classes = figure_classes
-            @sizes = sizes
+          figure_classes = ["captioned-image#{'-chrome' if options.chrome}"]
+          figure_classes << "float-#{options.float}" if options.float
+          figure_classes << "clear-#{options.clear}" if options.clear
+          figure_class_decl = " class=\"#{figure_classes.join(' ')}\""
 
-            fig_caption = ["  <figcaption class=\"captioned-image-caption-#{@position}\">"]
-            fig_caption << "    #{@caption}"
-            fig_caption << "  </figcaption>"
+          img_attributes = ""
+          img_attributes += "width=\"#{options.width}\" " if options.width
+          img_attributes += "height=\"#{options.height}\" " if options.height
 
-            image = @source.map do |s| 
-              ["  <img src=\"#{s}\" alt=\"#{@caption}\" #{@sizes}/>"]
-            end
+          figcaption_class = "caption-#{options.position}"
+          figcaption_class += "-chrome" if options.chrome
 
-            figure_content = @position == "top" ? fig_caption + image : image + fig_caption
+          fig_caption = ["  <figcaption class=\"#{figcaption_class}\">"]
+          fig_caption << "    #{caption}"
+          fig_caption << "  </figcaption>"
 
-            figure = ["<figure class=\"captioned-image-figure#{@figure_classes}\">"]
-            figure += figure_content
-            figure << "</figure>"
-            figure.join("\n")
-          else
-            raise "No image png, gif, bmp, or jpeg urls found in {% captioned_image #{@markup} %}"
+          image = options.source.map do |src| 
+            # should this caption be escaped if it contains html or quotes?
+            ["  <img src=\"#{src}\" alt=\"#{caption}\" #{img_attributes}/>"]
           end
+
+          figure_content = options.position == "top" ? fig_caption + image : image + fig_caption
+
+          figure = ["<figure#{figure_class_decl}>"]
+          figure += figure_content
+          figure << "</figure>"
+
+          return figure.join("\n")
         end
 
-        def caption
+        def extract_caption(markup)
           # the markup other methods use to find params has the caption removed to avoid parsing issues
-          @caption, @mutable_markup = CaptionExtractor.extract @markup
-          @caption
+          caption, remaining_markup = CaptionExtractor.extract(markup)
+          return caption, remaining_markup
         end
 
-        def source
-          @source = @mutable_markup.scan(Source).map(&:first).compact
-        end
-
-        def position
-          p = @mutable_markup.scan(Position).flatten.last
-        end
-
-        def figure_classes
-          f = @mutable_markup.scan(Float).flatten.last
-          c = @mutable_markup.scan(Clear).flatten.last
-          classes = ""
-          classes += " float-#{f}" if f
-          classes += " clear-#{c}" if c
-          classes
-        end
-
-        def sizes
-          s = @mutable_markup.scan(Sizes).map(&:first).compact
-          attrs = ""
-          attrs += "width=\"#{s[0]}\" " if s[0]
-          attrs += "height=\"#{s[1]}\" " if s[1]
-          attrs
+        def parse_options(option_string)
+          CaptionOptionsParser.new(option_string)
         end
 
         def process_liquid(context)
